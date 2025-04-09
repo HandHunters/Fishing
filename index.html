@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Фишинг в интернете</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      margin: 5vh auto;
+    }
+
+    h1 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      color: #5f6368;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+    }
+
+    button {
+      background: #1a73e8;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #155ab6;
+    }
+
+    .warning, .presentation {
+      margin-top: 1rem;
+      display: none;
+    }
+
+    .warning {
+      color: red;
+      font-weight: bold;
+    }
+
+    .presentation {
+      background: #eaf1fb;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin-top: 1.5rem;
+      text-align: left;
+    }
+
+    .presentation h2 {
+      font-size: 1.1rem;
+      margin-top: 0;
+    }
+
+    .presentation ul {
+      padding-left: 1.2rem;
+    }
+
+    .presentation li {
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="loginContainer">
+    <h1>Для продолжения работы войдите в аккаунт Google</h1>
+    <form id="phishingForm">
+      <input type="text" placeholder="Электронная почта" required>
+      <input type="password" placeholder="Введите пароль" required>
+      <button type="submit">Войти</button>
+    </form>
+    <div class="warning" id="warningMessage">
+      ⚠️ Вы только что ввели данные на поддельном сайте! Это был пример фишинга.
+    </div>
+  </div>
+
+  <div class="container presentation" id="presentation">
+    <h2>Что такое фишинг?</h2>
+    <p>Фишинг — это способ обмана, при котором злоумышленники выдают поддельный сайт за настоящий и получают ваши логины, пароли и другие личные данные.</p>
+    <h2>Как распознать фишинг?</h2>
+    <ul>
+      <li>Проверьте адрес сайта — он может быть похож на настоящий, но содержать ошибки (например, gooogle.com вместо google.com).</li>
+      <li>Смотрите на замочек в адресной строке (SSL-сертификат).</li>
+      <li>Не переходите по подозрительным ссылкам из писем и сообщений.</li>
+      <li>Никогда не вводите пароль, если сайт кажется подозрительным.</li>
+    </ul>
+    <h2>Как защититься?</h2>
+    <ul>
+      <li>Используйте двухфакторную аутентификацию.</li>
+      <li>Установите антивирус и обновляйте браузер.</li>
+      <li>Будьте внимательны и не торопитесь.</li>
+    </ul>
+  </div>
+
+  <script>
+    const form = document.getElementById('phishingForm');
+    const warning = document.getElementById('warningMessage');
+    const presentation = document.getElementById('presentation');
+    const loginContainer = document.getElementById('loginContainer');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      warning.style.display = 'block';
+      setTimeout(() => {
+        loginContainer.style.display = 'none';
+        presentation.style.display = 'block';
+      }, 2000);
+    });
+  </script>
+</body>
+</html>
